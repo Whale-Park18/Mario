@@ -5,6 +5,15 @@ using UnityEngine;
 
 namespace Mario.Character.Enemy
 {
+    public enum Status
+    {
+        IDLE,
+        Move,
+        Trace,
+        Comeback,
+        Attack
+    }
+
     public abstract class BasicEnemy : BasicCharacter
     {
         //---------------------------------------
@@ -13,6 +22,11 @@ namespace Mario.Character.Enemy
 
         // 생존 상태 플래그
         protected bool _isLive = true;
+
+        // 
+        protected Status _status;
+
+        protected Status _deltaStatus;
 
         //---------------------------------------
         // 피해 위치
@@ -46,6 +60,8 @@ namespace Mario.Character.Enemy
         protected Coroutine _movementCoroutine;
         //protected Coroutine _damageCoroutine;
         protected Coroutine _attackCoroutine;
+
+        
 
         /// <summary>
         /// 캐릭터 이동 함수
@@ -88,6 +104,11 @@ namespace Mario.Character.Enemy
                 StopCoroutine(_attackCoroutine);
             
             return base.Die();
+        }
+
+        private void Update()
+        {
+            //StatusUpdate();
         }
     }
 }
