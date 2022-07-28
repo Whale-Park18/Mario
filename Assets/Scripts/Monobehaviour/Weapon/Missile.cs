@@ -2,29 +2,32 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Missile : MonoBehaviour
+namespace Mario.Weapon
 {
-    public float _speed;
-    public float _maxSpeed;
-    Rigidbody _rigidbody;
-
-    // Start is called before the first frame update
-    void Start()
+    public class Missile : MonoBehaviour
     {
-        _rigidbody = GetComponent<Rigidbody>();   
-    }
+        public float _speed;
+        public float _maxSpeed;
+        Rigidbody _rigidbody;
 
-    // Update is called once per frame
-    void Update()
-    {
-        //print(_rigidbody.velocity.magnitude);
-    }
+        // Start is called before the first frame update
+        void Start()
+        {
+            _rigidbody = GetComponent<Rigidbody>();   
+        }
 
-    private void FixedUpdate()
-    {
-        if (_rigidbody.velocity.magnitude >= _maxSpeed * _maxSpeed)
-            return;
+        // Update is called once per frame
+        void Update()
+        {
+            //print(_rigidbody.velocity.magnitude);
+        }
 
-        _rigidbody.AddForce(transform.forward * _speed, ForceMode.Impulse);
+        private void FixedUpdate()
+        {
+            if (_rigidbody.velocity.magnitude >= _maxSpeed * _maxSpeed)
+                return;
+
+            _rigidbody.AddForce(transform.forward * _speed, ForceMode.Impulse);
+        }
     }
 }
