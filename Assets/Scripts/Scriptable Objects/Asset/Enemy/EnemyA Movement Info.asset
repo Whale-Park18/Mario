@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 337f7fed9f5f1b849831b7cee9f5fb1c, type: 3}
   m_Name: EnemyA Movement Info
   m_EditorClassIdentifier: 
-  _moveSpeed: 6
+  _moveSpeed: 2
   _jumpPower: 0
