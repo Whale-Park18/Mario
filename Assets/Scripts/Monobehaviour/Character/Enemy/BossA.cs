@@ -14,8 +14,9 @@ namespace Mario.Character.Enemy
     ///         * 돌진(최대 3연속)
     ///         * 충격파
     /// </summary>
-    public class EnemyD : BasicEnemy
+    public class BossA : BasicEnemy
     {
+
         public override IEnumerator BeDamage(int damage)
         {
             throw new System.NotImplementedException();

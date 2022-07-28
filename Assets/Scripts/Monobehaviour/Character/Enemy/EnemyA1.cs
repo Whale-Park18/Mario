@@ -12,14 +12,21 @@ namespace Mario.Character.Enemy
     ///     * 추적: X
     ///     * 공격: 충돌
     /// </summary>
-    public class EnemyA : BasicEnemy
+    public class EnemyA1 : BasicEnemy
     {
+        // 생명력
         [SerializeField]
         private int _hp;
 
+        // 최소 생명력
         [SerializeField]
         private float _minHP;
 
+
+        /// <summary>
+        /// 이동 함수
+        /// </summary>
+        /// <returns></returns>
         protected override IEnumerator Move()
         {
             float remainingDistance = (transform.position - _targetPosition).sqrMagnitude;
@@ -28,7 +35,7 @@ namespace Mario.Character.Enemy
                 Turn();
 
                 transform.position += _direction * _movementInfo.MoveSpeed * Time.deltaTime;
-                _animator.SetBool("isWorking", _direction != Vector3.zero);
+                _animator.SetBool("isWalk", _direction != Vector3.zero);
 
                 remainingDistance = (transform.position - _targetPosition).sqrMagnitude;
 

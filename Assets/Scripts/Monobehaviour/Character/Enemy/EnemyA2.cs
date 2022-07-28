@@ -12,9 +12,10 @@ namespace Mario.Character.Enemy
     ///     * 추적: O
     ///     * 공격: 충돌
     /// </summary>
-    public class EnemyB : EnemyA
+    public class EnemyA2 : EnemyA1
     {
         private GameObject _target;
+
 
         /// <summary>
         /// 추적 방향 설정 함수
@@ -64,7 +65,7 @@ namespace Mario.Character.Enemy
         /// <summary>
         /// 복귀 방향 설정 함수
         /// </summary>
-        private void SetReturnDirection()
+        private void SetComebackDirection()
         {
             _targetPosition = Distance(_endPoints[0]) <= Distance(_endPoints[1]) ? _endPoints[0] : _endPoints[1];
             _direction = (_targetPosition - transform.position).normalized;
@@ -74,11 +75,11 @@ namespace Mario.Character.Enemy
         /// 복귀 함수
         /// </summary>
         /// <returns>코루틴</returns>
-        private IEnumerator Return()
+        private IEnumerator Comeback()
         {
             if(_isLive)
             {
-                SetReturnDirection();
+                SetComebackDirection();
 
                 if (_movementCoroutine != null)
                     StopCoroutine(_movementCoroutine);
@@ -112,7 +113,7 @@ namespace Mario.Character.Enemy
                     StopCoroutine(_directionCoroutine);
                     _direction = Vector3.zero;
                 }
-                _directionCoroutine = StartCoroutine(Return());
+                _directionCoroutine = StartCoroutine(Comeback());
             }
         }
     }
