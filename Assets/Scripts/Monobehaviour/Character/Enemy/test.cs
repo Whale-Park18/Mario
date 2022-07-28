@@ -2,18 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ForwardTest : MonoBehaviour
+public class test : MonoBehaviour
 {
+    Vector3 _direction;
+
+    
+    public MovementInfo _movementInfo;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        _direction = -transform.right;
     }
 
     // Update is called once per frame
     void Update()
     {
-        Debug.DrawRay(transform.position, transform.forward * 3, Color.red);
-
+        transform.position += _direction * _movementInfo.MoveSpeed * Time.deltaTime;
     }
 }
